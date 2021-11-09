@@ -12,7 +12,7 @@ services:
     - 3307:3306
   app:
     container_name: timesheet
-    build: ./
+    image: hizemmontassar/devops:38
     depends_on:
     - mysql
     ports:
