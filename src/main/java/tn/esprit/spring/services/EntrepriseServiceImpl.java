@@ -2,6 +2,7 @@ package tn.esprit.spring.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,8 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	}
 	
 	public void affecterDepartementAEntreprise(int depId, int entrepriseId) {
-				Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).get();
+				Optional<Entreprise> entrepriseFind = entrepriseRepoistory.findById(entrepriseId);
+				Entreprise entrepriseManagedEntity = entrepriseFind.get();
 				Departement depManagedEntity = deptRepoistory.findById(depId).get();
 				
 				depManagedEntity.setEntreprise(entrepriseManagedEntity);
